@@ -1,0 +1,46 @@
+/* .container{
+  max-width: 140rem ;
+  padding: 4.2rem 2.4rem;
+  display: flex;
+  justify-content:space-between;
+}
+
+ul {
+  display: flex;
+  gap: 3.2rem;
+} */
+
+
+
+.container {
+  max-width: 140rem;
+  padding: 4.2rem 2.4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  display: flex;
+  gap: 3.2rem;
+}
+
+ ul li a {
+  color: #535bf2;;
+  text-decoration: none;
+  font-size: 1.7rem;
+  padding: 0.8rem 1.6rem; /* keeps button-like size */
+  border-radius: 6px;
+  transition: all 0.3s ease;  } 
+
+/* Hover effect */
+ul li a:hover {
+  background: rgba(255, 255, 255, 0.15); /* soft white transparent */
+  color: #fff; /* stays white */
+}
+
+/* Active link */
+ul li a.active {
+  background: rgba(255, 255, 255, 0.25); 
+  font-weight: bold;
+  color: #fff;
+}

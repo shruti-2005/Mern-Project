@@ -1,0 +1,23 @@
+/* Global reset for layout */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content grows */
+main {
+  flex: 1;
+}
+
+/* Footer styling */
+footer {
+  padding: 3.2rem;
+  text-align: center;
+  background-color: #535bf2;  
+  margin-top: auto;
+  color: white;               /* so text is readable */
+  font-weight: 500;
+  font-size: 1.4rem;
+}
