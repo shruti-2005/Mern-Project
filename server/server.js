@@ -10,13 +10,15 @@ const connectDb = require('./utils/db');
 const errorMiddleware = require('./middlewares/error-middleware');
 
 //lets tackle cors
-const corsOptions = {
-  origin: process.env.CLIENT_URL,
-  methods:"GET,POST,PUT,DELETE,PATCH,HEAD",
-  credentials:true,
-}
+// const corsOptions = {
+//   origin: process.env.CLIENT_URL,
+//   methods:"GET,POST,PUT,DELETE,PATCH,HEAD",
+//   credentials:true,
+// }
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+
+app.use(cors());
 
 app.use(express.json());
 
