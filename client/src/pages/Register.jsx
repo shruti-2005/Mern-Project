@@ -1,4 +1,9 @@
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "../store/auth";
+import { toast } from "react-toastify";
+
+
 
 export const Register = () => {
   const [user, setUser] = useState({
@@ -7,6 +12,11 @@ export const Register = () => {
     phone: "",
     password: "",
   });
+
+  const navigate = useNavigate();
+  const {storeTokenInLS,API} = useAuth();
+
+  const URL = `${API}/api/auth/register`;
 
   const handleInput = (e) => {
     console.log(e);
@@ -20,9 +30,41 @@ export const Register = () => {
   };
 
   // handle form on submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); //from preventing refreshing the page when clicked on submit
     console.log(user);
+
+    try{
+    const response = await fetch(URL,
+      {
+        method:"POST",
+        headers:{
+          'Content-Type':'application/json',
+        },
+        body:JSON.stringify(user),
+
+      }
+    );
+
+    
+    const res_data = await response.json();
+    console.log("res from server",res_data.msg); //this gives what we are getting on postman (msg,token n user id)
+
+    if(response.ok){
+     //localStorage.setItem("token",res_data.token);//store token on local storage
+
+      storeTokenInLS(res_data.token);
+      setUser({username:"",email:"",phone:"",password:""});
+      toast.success("Registration successful");
+      navigate("/");
+    }else{
+      toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message);
+    }
+
+    
+  } catch(error){
+    console.log("register",error);
+  }
   };
 
   

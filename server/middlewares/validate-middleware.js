@@ -6,6 +6,7 @@ const validate = (schema) => async (req, res, next) => {
   } catch (err) {
     console.log("Validation error:", err);
 
+    
     if (err.errors && err.errors.length > 0) {
       return next({
         status: 400,
@@ -13,7 +14,6 @@ const validate = (schema) => async (req, res, next) => {
         extraDetails: "Validation Error",
       });
     }
-
     if (err.issues && err.issues.length > 0) {
       return next({
         status: 400,

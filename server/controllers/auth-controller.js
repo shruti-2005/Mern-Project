@@ -33,7 +33,7 @@ const register = async (req, res) => {
     const userExist = await User.findOne({ email: email });
 
     if (userExist) {
-      return res.status(400).json({ msg: "email already exists" });
+      return res.status(400).json({ message: "email already exists" });
     }
 
     const userCreated = await User.create({ username, email, phone, password });
@@ -58,7 +58,7 @@ const register = async (req, res) => {
 
 //User Login Logic
 
-const login = async (req, res) => {
+const login = async (req, res ,next) => {
   try {
     const { email, password } = req.body;
     //check user exist
@@ -66,7 +66,7 @@ const login = async (req, res) => {
 
     const userExist = await User.findOne({ email });
     if (!userExist) {
-      return res.status(400).json({ message : "Invalid credentials"});
+      return res.status(401).json({ message: "Invalid credentials"});
     }
 
     //compare password
@@ -83,7 +83,7 @@ const login = async (req, res) => {
       });
     }
     else{
-      res.status(401).json({ message : "Invalid credentials"});
+      res.status(401).json({ message: "Invalid credentials"});
     }
 
 
@@ -95,5 +95,19 @@ const login = async (req, res) => {
   }
 };
 
+//User Logic - to send user data
 
-module.exports = { home, register,login };
+const user =async (req,res) =>{
+  try{
+    const userData = req.user;
+    console.log(userData);
+    res.status(200).json({userData})
+
+  }catch(error){
+    console.log(`error from the user route ${error}`);
+  }
+
+}
+
+
+module.exports = { home, register,login ,user};
