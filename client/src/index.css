@@ -702,3 +702,127 @@ a.active {
     font-size: 1.1rem;  /* ✅ Still bigger for small screens */
   }
 }
+
+
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
+
+/* Tablet view (≤ 1024px) */
+@media (max-width: 1024px) {
+  html {
+    font-size: 56.25%; /* smaller base font (1rem = 9px approx) */
+  }
+
+  .grid-two-cols,
+  .grid-three-cols,
+  .grid-four-cols {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .adminContainer {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .hero-image img {
+    width: 80%;
+  }
+}
+
+/* Mobile view (≤ 768px) */
+@media (max-width: 768px) {
+  html {
+    font-size: 50%; /* shrink base font */
+  }
+
+  .grid-two-cols,
+  .grid-three-cols,
+  .grid-four-cols {
+    grid-template-columns: 1fr; /* stack columns */
+  }
+
+  .container {
+    padding: 2rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 3.6rem;
+  }
+
+  p,
+  li,
+  label,
+  input,
+  textarea,
+  a {
+    font-size: 1.6rem;
+  }
+
+  button {
+    width: 100%; /* buttons full width on mobile */
+    text-align: center;
+  }
+
+  /* Hero */
+  .hero-image img {
+    width: 100%;
+  }
+
+  /* Contact form */
+  .section-contact .contact-img img {
+    width: 100%;
+  }
+
+  .section-contact .section-form input,
+  .section-contact .section-form textarea {
+    width: 100%;
+  }
+
+  /* Admin Panel */
+  .adminContainer {
+    grid-template-columns: 1fr; /* sidebar on top */
+  }
+
+  .admin-users table {
+    display: block;
+    overflow-x: auto; /* scroll horizontally */
+    white-space: nowrap;
+  }
+
+  .admin-users th,
+  .admin-users td {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  /* Contacts */
+  .admin-contacts table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* Small mobile (≤ 480px) */
+@media (max-width: 480px) {
+  html {
+    font-size: 45%;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1.4rem;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .secondary-btn {
+    margin-left: 0; /* stack buttons vertically */
+  }
+}
